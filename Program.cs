@@ -53,6 +53,7 @@ namespace CalculadoraConsola
                     Console.WriteLine($"Error : {ex.Message}\n");
                 }
 
+
                 Console.WriteLine("Presione Cualquier tecla para continuar...");
                 Console.ReadKey();
                 Console.Clear();
@@ -62,12 +63,11 @@ namespace CalculadoraConsola
 
             private static void MostrarMenu()
             {
-                Console.WriteLine("=== Calculadora Sencilla ===");
-                Console.WriteLine("Selecciona una opcion: ");
-                Console.WriteLine("1. SUMAR");
-                Console.WriteLine("2. RESTAR");
-                Console.WriteLine("3. MULTIPLICAR");
-                Console.WriteLine("4. DIVIDIR");
+                Console.WriteLine("Elija una opcion: ");
+                Console.WriteLine("1. SUMA");
+                Console.WriteLine("2. RESTA");
+                Console.WriteLine("3. MULTIPLICACION");
+                Console.WriteLine("4. DIVISION");
                 Console.WriteLine("5. SALIR");
             }
 

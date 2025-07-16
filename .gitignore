@@ -1,0 +1,10 @@
+# Archivos temporales de Visual Studio
+.vs/
+
+# Salidas de compilación
+bin/
+obj/
+
+# Otros típicos
+*.user
+*.suo

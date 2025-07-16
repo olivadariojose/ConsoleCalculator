@@ -6,3 +6,11 @@ C:\Users\oliva\source\repos\CalculadoraConsola\CalculadoraConsola\bin\Debug\Calc
 C:\Users\oliva\source\repos\CalculadoraConsola\CalculadoraConsola\obj\Debug\CalculadoraConsola.exe
 C:\Users\oliva\source\repos\CalculadoraConsola\CalculadoraConsola\obj\Debug\CalculadoraConsola.pdb
 C:\Users\oliva\source\repos\CalculadoraConsola\CalculadoraConsola\obj\Debug\CalculadoraConsola.exe.config
+C:\Users\LENOVO\Source\Repos\ConsoleCalculator\bin\Debug\CalculadoraConsola.exe.config
+C:\Users\LENOVO\Source\Repos\ConsoleCalculator\bin\Debug\CalculadoraConsola.exe
+C:\Users\LENOVO\Source\Repos\ConsoleCalculator\bin\Debug\CalculadoraConsola.pdb
+C:\Users\LENOVO\Source\Repos\ConsoleCalculator\obj\Debug\CalculadoraConsola.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Source\Repos\ConsoleCalculator\obj\Debug\CalculadoraConsola.exe.config
+C:\Users\LENOVO\Source\Repos\ConsoleCalculator\obj\Debug\CalculadoraConsola.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Source\Repos\ConsoleCalculator\obj\Debug\CalculadoraConsola.exe
+C:\Users\LENOVO\Source\Repos\ConsoleCalculator\obj\Debug\CalculadoraConsola.pdb
