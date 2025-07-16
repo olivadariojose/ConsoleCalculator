@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3FE27C45-8155-4D09-ACCB-03FFCC09D88A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CalculadoraConsola</RootNamespace>
-    <AssemblyName>CalculadoraConsola</AssemblyName>
+    <RootNamespace>ConsoleCalculator</RootNamespace>
+    <AssemblyName>ConsoleCalculator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculadora.cs" />
+    <Compile Include="Calculator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -4,102 +4,133 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CalculadoraConsola
+namespace ConsoleCalculator
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            var calculadora = new Calculadora();
+            var calculator = new Calculator();
+            bool keepRunning;
 
-            while (true)
+            do
             {
-                MostrarMenu();
+                ShowMenu();
+                int option = ReadMenuOption();
 
-                int opcion = LeerOpcionMenu();
-
-                if (opcion == 5)
+                if (option == 5)
                 {
-                    Console.WriteLine("Saliendo de la calculadora...");
+                    Console.WriteLine("Saliendo ...");
                     break;
                 }
 
-                double num1 = LeerNumero("Ingresa el primer numero: ");
-                double num2 = LeerNumero("Ingrese el segundo numero:");
+                double num1 = ReadNumber("Ingresa el primer numero: ");
+                double num2 = ReadNumber("Ingresa el segundo numero: ");
 
                 try
                 {
-                    double resultado = 0;
-                    switch (opcion)
+                    double result;
+                    switch (option)
                     {
                         case 1:
-                            resultado = calculadora.Sumar(num1, num2);
+                            result = calculator.Add(num1, num2);
                             break;
                         case 2:
-                            resultado = calculadora.Restar(num1, num2);
+                            result = calculator.Substract(num1, num2);
                             break;
                         case 3:
-                            resultado = calculadora.Multiplicar(num1, num2);
+                            result = calculator.Multiply(num1, num2);
                             break;
                         case 4:
-                            resultado = calculadora.Dividir(num1, num2);
+                            result = calculator.Divide(num1, num2);
                             break;
-
+                        default:
+                            throw new InvalidOperationException("Opcion no valida");
                     }
-                    Console.WriteLine($"\n>>> Resultado: {resultado}\n");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"\n >>> RESULTADO : {result} \n");
                 }
                 catch (Exception ex)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Error : {ex.Message}\n");
                 }
+                finally
+                {
+                    Console.ResetColor();
+                }
 
+                keepRunning = AskToContinue();
+                if (keepRunning) Console.Clear();
 
-                Console.WriteLine("Presione Cualquier tecla para continuar...");
-                Console.ReadKey();
-                Console.Clear();
+            } while (keepRunning);
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Programa finalizado correctamente");
+            Console.ReadKey();
+        }
+
+        private static bool AskToContinue()
+        {
+            string response;
+            while (true)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("Desea realizar otra operacion? SI/NO: ");
+
+                response = (Console.ReadLine() ?? "").Trim().ToUpperInvariant();
+                if (response == "SI") return true;
+                if (response == "NO") return false;
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Respuesta invalida. Escriba SI o NO");
             }
         }
 
+        private static void ShowMenu()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Elija una opcion: ");
+            Console.WriteLine("1. SUMA");
+            Console.WriteLine("2. RESTA");
+            Console.WriteLine("3. MULTIPLICACION");
+            Console.WriteLine("4. DIVISION");
+            Console.WriteLine("5. SALIR");
+            Console.WriteLine("\n");
+        }
 
-            private static void MostrarMenu()
+        private static int ReadMenuOption()
+        {
+            int option;
+            while (true)
             {
-                Console.WriteLine("Elija una opcion: ");
-                Console.WriteLine("1. SUMA");
-                Console.WriteLine("2. RESTA");
-                Console.WriteLine("3. MULTIPLICACION");
-                Console.WriteLine("4. DIVISION");
-                Console.WriteLine("5. SALIR");
+                Console.WriteLine("Opcion (1-5): ");
+                string userInput = Console.ReadLine();
+                if (int.TryParse(userInput, out option) && option >= 1 && option <= 5)
+                    return option;
+                Console.WriteLine("Opcion invalida. Intente de nuevo");
             }
+        }
 
-            private static int LeerOpcionMenu()
+        private static double ReadNumber(string message)
+        {
+            double number;
+            while (true)
             {
-                int opcion;
-                while (true)
-                {
-                    Console.WriteLine("Opcion (1-5): ");
-                    string entrada = Console.ReadLine();
-                    if (int.TryParse(entrada, out opcion) && opcion >= 1 && opcion <= 5)
-                        return opcion;
-                    Console.WriteLine("Opcion invalida. Intente de nuevo");
-                }
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write(message);
+                if (double.TryParse(Console.ReadLine(), out number))
+                    return number;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Entrada invalida. Intente de nuevo");
             }
-
-            private static double LeerNumero(string mensaje)
-            {
-                double numero;
-                while (true)
-                {
-                    Console.Write(mensaje);
-                    if (double.TryParse(Console.ReadLine(), out numero))
-                        return numero;
-                    Console.WriteLine("Entrada invalida. Intente de nuevo");
-                }
-            }
-  
-
         }
 
 
 
     }
+
+
+
+}
 
