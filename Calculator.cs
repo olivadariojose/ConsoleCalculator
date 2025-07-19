@@ -11,6 +11,7 @@ namespace ConsoleCalculator
         {
             if(y == 0d || y == -0d)
                 throw new DivideByZeroException("No se puede dividir entre cero.");
+
             return Checked(()=> x / y);
         }
 
@@ -27,7 +28,7 @@ namespace ConsoleCalculator
             }
 
             if (double.IsNaN(result) || double.IsInfinity(result))
-                throw new OverflowException("Resultado fuera del rango por double");
+                throw new OverflowException("Resultado fuera del rango por tipo double");
 
             return result;
         }

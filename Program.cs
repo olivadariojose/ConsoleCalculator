@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,7 +67,7 @@ namespace ConsoleCalculator
             } while (keepRunning);
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Programa finalizado correctamente");
+            Console.WriteLine("Programa finalizado");
             Console.ReadKey();
         }
 
@@ -76,14 +77,14 @@ namespace ConsoleCalculator
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("Desea realizar otra operacion? SI/NO: ");
+                Console.WriteLine("Desea realizar otra operacion? SI/NO: "); 
 
                 response = (Console.ReadLine() ?? "").Trim().ToUpperInvariant();
                 if (response == "SI") return true;
                 if (response == "NO") return false;
 
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Respuesta invalida. Escriba SI o NO");
+                Console.WriteLine("Respuesta no valida. Escriba SI o NO");
             }
         }
 
@@ -106,21 +107,33 @@ namespace ConsoleCalculator
             {
                 Console.WriteLine("Opcion (1-5): ");
                 string userInput = Console.ReadLine();
+
                 if (int.TryParse(userInput, out option) && option >= 1 && option <= 5)
                     return option;
-                Console.WriteLine("Opcion invalida. Intente de nuevo");
+
+                Console.WriteLine("Opcion no valida. Intente de nuevo");
             }
         }
 
         private static double ReadNumber(string message)
         {
             double number;
+            string input;
+
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.Write(message);
-                if (double.TryParse(Console.ReadLine(), out number))
-                    return number;
+                input = Console.ReadLine()?.Trim();
+                
+
+
+                string normalized = input.Replace(',', '.');
+
+
+                if (double.TryParse(normalized, NumberStyles.Any, CultureInfo.InvariantCulture, out number)) return number;
+
+ 
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Entrada invalida. Intente de nuevo");
             }
